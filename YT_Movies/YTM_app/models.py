@@ -45,8 +45,8 @@ class Movie(models.Model):
     
 class Screenshot(models.Model):
     movieFrom = models.ForeignKey(Movie, default='', on_delete=models.CASCADE)
-    # moviename = models.CharField("Movie Name", max_length=255, null=True, blank=True)
     img = models.CharField("URL", default='', max_length=255, null=True, blank=True)
+    altText = models.CharField("Alternative Text", default='', max_length=255, null=True, blank=True)
 
     def __str__(self):
         return f"{self.pk}) {self.movieFrom.movieName}"

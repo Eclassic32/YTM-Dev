@@ -20,28 +20,34 @@
         <h1 class="title">{{ movie.movieName }}</h1>
         <p class="desc">{{ movie.description }}</p>
         <div class="genres">
-            <p><b>Genres:</b> {{ movie.genre }}</p>
+            <p><b>Genres:</b> 
+            {% for genre in movie.genres.all %}
+                {{ genre.genreName }},
+            {% endfor %}
+            </p>
         </div>
         <div class="rating">
-            <p><b>Rating:</b> 7.0</p>
+            <p><b>Rating:</b> {{ movie.rating }}</p>
         </div>
         <div class="actor">
+            <h4>Actors</h4>
             <ul>
-                <li>Mark Fischbach as Mark</li>
-                <li>Rosanna Pansino as Professor Beauregard</li>
-                <li>Matthew Patrick as Hermit</li>
+                {% for role in movie.role_set.all %}
+                <li><b>{{ role.actor }}</b> as {{ role.character }}</li>
+                {% endfor %}
             </ul>
         </div>
         <div class="date">
             <p><b>Year:</b> {{ movie.year }}</p>
         </div>
+        <div class="producer">
+            <p><b>Producer:</b> {{ movie.producer }}</p>
+        </div>
         <div class="screenshots">
             <div class="owl-carousel owl-theme">
-                <img src="https://m.media-amazon.com/images/M/MV5BM2U5YmQ3MmUtNmM3Zi00OThlLTlmYTgtNDA2YjhiN2RiNzE2XkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
-                <img src="https://m.media-amazon.com/images/M/MV5BZjNmNzYyMGEtN2Q0Yi00ODExLTgyNGMtMDYwYWI1ODJjODQzXkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
-                <img src="https://m.media-amazon.com/images/M/MV5BNWVkMTkwOWYtMjk1MS00MDI3LTg1MDctNjY1MGE1OTEyMmIwXkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_.jpg" alt="">
-                <img src="https://m.media-amazon.com/images/M/MV5BMGExZDNmY2QtOTk2Ny00YmY4LWJmZDQtYzM0OTlhMmI1ODNkXkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
-                <img src="https://m.media-amazon.com/images/M/MV5BMzJmNWY1MDItZjgzMi00YTFjLTg1MDEtOTUyZDc1YzViYWY3XkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+                {% for screenshot in movie.screenshots.all %}
+                <img src="{{ screenshot.img }}" alt="{{ screenshot.altText }}">
+                {% endfor %}
             </div>
             <div class="custom-nav mt-2">
                 <div class="owl-dots"></div> <!-- Navigation dots -->
