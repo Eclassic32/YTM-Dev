@@ -34,7 +34,7 @@ class Movie(models.Model):
     poster = models.CharField("Poster URL", max_length=500, null=True, blank=True)
     movieLink = models.CharField("Movie URL", max_length=500, null=True, blank=True)
     rating = models.FloatField("Rating", default=1.0, null=True, blank=True)
-    genres = models.ManyToManyField(Genre, limit_choices_to={'id__lt': 4})
+    genres = models.ManyToManyField(Genre)
     screenshots = models.ManyToManyField('Screenshot', blank=True)
     actors = models.ManyToManyField(Actor, through='Role')
     isTopTen = models.BooleanField("Top 10", default=False, null=True, blank=True)
@@ -44,11 +44,12 @@ class Movie(models.Model):
         return self.movieName
     
 class Screenshot(models.Model):
-    movie = models.ForeignKey(Movie,  on_delete=models.CASCADE, verbose_name="Movie")
-    img = models.CharField("URL", max_length=255, null=True, blank=True)
+    movieFrom = models.ForeignKey(Movie, default='', on_delete=models.CASCADE)
+    # moviename = models.CharField("Movie Name", max_length=255, null=True, blank=True)
+    img = models.CharField("URL", default='', max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.pk}) {self.movie.movieName}"
+        return f"{self.pk}) {self.movieFrom.movieName}"
     
 class Role(models.Model):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE)
