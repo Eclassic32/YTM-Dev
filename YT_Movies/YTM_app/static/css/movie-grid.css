@@ -1,0 +1,46 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto repeat(4, minmax(100px, auto));
+    grid-template-rows: repeat(5, minmax(50px, auto));
+    gap: 10px;
+}
+
+.poster {
+    grid-area: 1/1/6/1;
+}
+
+.poster img {
+    width: 300px;
+}
+
+.title {
+    grid-area: 1/2/2/5;
+}
+
+.desc {
+    grid-area: 2/2/3/5;
+}
+
+.rating {
+    grid-area: 4/2/5/3;
+}
+
+.date{
+    grid-area: 4/3/5/4;
+}
+
+.genres{
+    grid-area: 3/2/4/5;
+}
+
+.actor {
+    grid-area: 1/5/5/6;
+}
+
+.screenshots {
+    grid-area: 5/2/6/6;
+}
+
+.screenshots img {
+    height: 100px;
+}

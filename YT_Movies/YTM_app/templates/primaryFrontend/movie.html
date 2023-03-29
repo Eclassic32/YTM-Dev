@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}MovieName - YouTube Movies{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static './css/movie-grid.css' %}">
+    <link rel="stylesheet" href="{% static './css/mvcards.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock style %}
+
+{% block content %}
+<main class="container d-flex flex-column">
+    <div class="my-4 grid">
+        <div class="poster">
+            <img src="{{ movie.poster }}" alt="">
+        </div>
+        <h1 class="title">{{ movie.movieName }}</h1>
+        <p class="desc">{{ movie.description }}</p>
+        <div class="genres">
+            <p><b>Genres:</b> {{ movie.genre }}</p>
+        </div>
+        <div class="rating">
+            <p><b>Rating:</b> 7.0</p>
+        </div>
+        <div class="actor">
+            <ul>
+                <li>Mark Fischbach as Mark</li>
+                <li>Rosanna Pansino as Professor Beauregard</li>
+                <li>Matthew Patrick as Hermit</li>
+            </ul>
+        </div>
+        <div class="date">
+            <p><b>Year:</b> {{ movie.year }}</p>
+        </div>
+        <div class="screenshots">
+            <div class="owl-carousel owl-theme">
+                <img src="https://m.media-amazon.com/images/M/MV5BM2U5YmQ3MmUtNmM3Zi00OThlLTlmYTgtNDA2YjhiN2RiNzE2XkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+                <img src="https://m.media-amazon.com/images/M/MV5BZjNmNzYyMGEtN2Q0Yi00ODExLTgyNGMtMDYwYWI1ODJjODQzXkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+                <img src="https://m.media-amazon.com/images/M/MV5BNWVkMTkwOWYtMjk1MS00MDI3LTg1MDctNjY1MGE1OTEyMmIwXkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_.jpg" alt="">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGExZDNmY2QtOTk2Ny00YmY4LWJmZDQtYzM0OTlhMmI1ODNkXkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+                <img src="https://m.media-amazon.com/images/M/MV5BMzJmNWY1MDItZjgzMi00YTFjLTg1MDEtOTUyZDc1YzViYWY3XkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+            </div>
+            <div class="custom-nav mt-2">
+                <div class="owl-dots"></div> <!-- Navigation dots -->
+                <div class="owl-nav">
+                    <button class="owl-prev"><i class="fas fa-chevron-left"></i></button> <!-- Prev button -->
+                    <button class="owl-next"><i class="fas fa-chevron-right"></i></button> <!-- Next button -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/{{ movie.movieLink }}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen class="mx-auto my-4"></iframe>
+</main>
+{% endblock content %}

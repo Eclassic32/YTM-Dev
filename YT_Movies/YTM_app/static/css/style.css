@@ -1,0 +1,21 @@
+/* --- Index --- */
+.banner {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+.poster{
+    height: 70vh;
+}
+.navbar input[aria-label="Search"]{
+    width: 30vw;
+}
+
+/* --- Catalog --- */
+
+/* Grid Style */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    gap: 10px;
+}

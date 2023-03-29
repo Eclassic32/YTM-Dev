@@ -1,0 +1,33 @@
+/* Card Style */
+.grid .card,
+.owl-carousel .card {
+    max-height: 400px;  
+    aspect-ratio: .675;
+}
+
+.grid .card-img,
+.owl-carousel .card-img {
+    aspect-ratio: .675;
+}
+ 
+.grid .card-img-overlay,
+.owl-carousel .card-img-overlay {
+    opacity: 0;
+    transition: 0.2s ease-in;
+}
+
+.grid .card-img-overlay:hover,
+.owl-carousel .card-img-overlay:hover {
+    opacity: 1;
+    transition: 0.2s ease-in;
+    background-color: #000000a0;
+}
+
+.grid .card-text.desc,
+.owl-carousel .card-text.desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+}
+
+

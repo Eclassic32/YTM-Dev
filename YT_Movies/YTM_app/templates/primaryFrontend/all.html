@@ -1,0 +1,59 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Search - Youtube Movies{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static './css/mvcards.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock style %}
+
+{% block content %}
+<div class="container-lg my-5 py-4">
+    <div class="row">
+        <div class="col-3" id="params">
+            <!-- Search Params -->
+            <div class="card">
+                <div class="card-header">
+                    Search Terms
+                </div>
+                <form action="{% url 'allPage' %}" role="search" class="mb-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">
+                            <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Genres</h5>
+                            <ul style="list-style-type: none">
+                                {% for genre in genres %}
+                                <li>    
+                                    <a href="{% url 'filterPage' slug=genre.slug %}">{{ genre.genreName }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="list-group-item d-flex" style="justify-content: space-evenly;">
+                            <a href="{% url 'allPage' %}" role="button" class="btn btn-outline-danger">Reset</a>
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="grid">
+                {% for movie in movies %}
+                <a class="card text-bg-dark" href="{% url 'moviePage' pk=movie.pk %}">
+                    <img src="{{ movie.poster }}" class="card-img " alt="...">
+                    <div class="card-img-overlay d-flex flex-column">
+                        <h4 class="card-title">{{ movie.movieName }}</h4>
+                        <p class="card-text desc">{{ movie.description }}</p>
+                        <p class="card-text"><small>{{ movie.genre }}</small></p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

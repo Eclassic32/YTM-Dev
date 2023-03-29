@@ -1,0 +1,68 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Top Movies - YouTube Movies{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static './css/mvcards.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock style %}
+
+{% block content %}
+<main class="my-5 container-lg">
+    <h1 class="pt-5 pb-3">Recommended Movies</h1>
+
+    <!-- Big card here -->
+    <div class="card my-4">
+        <div class="row g-0">
+            {% for m in rMovie %}
+            {% if m.isRecommended %}
+            <div class="col-md-4" style="width: 280px;">
+                <img src="{{ m.poster}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">{{ m.movieName }}</h1>
+                    <p class="card-text">{{ m.description }}</p>
+                    <p class="card-text">Genres: {{ m.genre }}</p>
+                    <p class="card-text">Rating: {{ m.rating }}</p>
+                    <p class="card-text">Producer: {{ m.producer }}</p>
+                    <a href="{% url 'moviePage' pk=m.pk %}" role="button" class="btn btn-danger">Watch</a>
+                </div>
+            </div>
+            {% else %}
+            <h3>No Recommended Movie </h3>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="owl-carousel owl-theme">
+        {% for movie in topMovies %}
+        {% if movie.isTopTen %}
+        <a class="card text-bg-dark mx-auto" href="{% url 'moviePage' pk=movie.pk %}">
+            <img src="{{ movie.poster }}"
+                class="card-img " alt="...">
+            <div class="card-img-overlay d-flex flex-column">
+                <h4 class="card-title">{{ movie.movieName}}</h4>
+                <p class="card-text desc">{{ movie.description }}</p>
+                <p class="card-text"><small>{{ movie.genre }}</small></p>
+            </div>
+        </a>
+        {% else %}
+        <h3>No Top Movies </h3>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="custom-nav my-3">
+        <div class="owl-dots"></div> <!-- Navigation dots -->
+        <div class="owl-nav">
+            <button class="owl-prev"><i class="fas fa-chevron-left"></i></button> <!-- Prev button -->
+            <button class="owl-next"><i class="fas fa-chevron-right"></i></button> <!-- Next button -->
+        </div>
+    </div>
+</main>
+{% endblock content %}

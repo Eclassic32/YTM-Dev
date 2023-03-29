@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}YouTube Movies{% endblock title %}
+
+{% block style %}
+<style>
+    body{
+        background: linear-gradient(#000000a0, #000000a0), url({% static '../img/background.jpg' %});
+        background-repeat: repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="banner">
+    <div class="container text-light d-flex">
+
+        <!-- Show Example Movie -->
+        <img class="poster me-4" src="https://m.media-amazon.com/images/M/MV5BN2RhZDBhMmMtYjFjNi00YWVjLTllZDEtZjA3MjY0NjhkZDAwXkEyXkFqcGdeQXVyMTA2MTU3NDk1._V1_.jpg" alt="">
+        <div class="my-auto">
+
+            <h1>Movie Title</h1>
+            <p>Labore ex labore Lorem officia nostrud. Dolor excepteur sunt aute magna occaecat dolore ad qui dolor enim ipsum aute. Ea officia adipisicing tempor Lorem consequat voluptate non eiusmod officia. Elit minim voluptate labore sit occaecat in commodo. Officia sit consequat pariatur in Lorem occaecat in nostrud fugiat laboris. Veniam ut nisi et do deserunt Lorem aliquip aliquip tempor nisi. Ullamco officia consequat aute occaecat nostrud magna labore consequat ut elit veniam anim id nostrud.</p>
+            
+            <!-- Buttons -->
+            <h4>Watch this and other original movies from YouTube Content Creators</h4>
+            <a role="button" class="btn btn-danger me-2" href="movie.html?id=0">Watch</a>
+            <a role="button" class="btn btn-primary" href="catalog.html">All Movies</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}
