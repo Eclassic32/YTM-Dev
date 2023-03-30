@@ -27,8 +27,8 @@
             
             <!-- Buttons -->
             <h4>Watch this and other original movies from YouTube Content Creators</h4>
-            <a role="button" class="btn btn-danger me-2" href="movie.html?id=0">Watch</a>
-            <a role="button" class="btn btn-primary" href="catalog.html">All Movies</a>
+            <a role="button" class="btn btn-danger me-2" href="{% url 'moviePage' pk=1 %}">Watch</a>
+            <a role="button" class="btn btn-primary" href="{% url 'allPage' %}">All Movies</a>
         </div>
         
     </div>
