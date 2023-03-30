@@ -12,13 +12,13 @@ def homePage(request):
 def allPage(request, slug=None):
     genre = None
     movies = Movie.objects.all()
-    genres = Genre.objects.all()
+    genres = Genre.objects.order_by('genreName')
     searchData = request.GET.get('search')
     if searchData:
         movies = Movie.objects.filter(Q(movieName__icontains = searchData))
     if slug:
         genre = get_object_or_404(Genre, slug=slug)
-        movies = movies.filter(genre=genre)
+        movies = movies.filter(genres__in=[genre])
     return render(request, "primaryFrontend/all.html", {
         'movies': movies,
         'genres': genres,

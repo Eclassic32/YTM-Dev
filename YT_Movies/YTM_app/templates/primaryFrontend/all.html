@@ -48,7 +48,11 @@
                     <div class="card-img-overlay d-flex flex-column">
                         <h4 class="card-title">{{ movie.movieName }}</h4>
                         <p class="card-text desc">{{ movie.description }}</p>
-                        <p class="card-text"><small>{{ movie.genre }}</small></p>
+                        <p class="card-text"><small>
+                            {% for genre in movie.genres.all %}
+                                {{ genre.genreName }}, 
+                            {% endfor %}
+                        </small></p>
                     </div>
                 </a>
                 {% endfor %}
